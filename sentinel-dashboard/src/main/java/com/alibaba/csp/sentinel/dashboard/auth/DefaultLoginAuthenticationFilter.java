@@ -107,15 +107,17 @@ public class DefaultLoginAuthenticationFilter implements LoginAuthenticationFilt
             }
         }
 
-        AuthService.AuthUser authUser = authService.getAuthUser(httpRequest);
-
-        HttpServletResponse httpResponse = (HttpServletResponse) response;
-        if (authUser == null) {
-            // If auth fail, set response status code to 401
-            httpResponse.setStatus(HttpStatus.UNAUTHORIZED.value());
-        } else {
-            chain.doFilter(request, response);
-        }
+//        AuthService.AuthUser authUser = authService.getAuthUser(httpRequest);
+//
+//        HttpServletResponse httpResponse = (HttpServletResponse) response;
+//        if (authUser == null) {
+//            // If auth fail, set response status code to 401
+//            httpResponse.setStatus(HttpStatus.UNAUTHORIZED.value());
+//        } else {
+//            chain.doFilter(request, response);
+//        }
+        //直接放行，不用登录
+        chain.doFilter(request, response);
     }
 
     @Override
